@@ -162,13 +162,13 @@ def validateVersionName(String versionName) {
 def downloadBootstrap(String arch, String expectedChecksum, String version) {
     def digest = java.security.MessageDigest.getInstance("SHA-256")
 
-    def localUrl = "src/main/cpp/bootstrap-" + arch + ".zip"
+    def localUrl = "src/main/cpp/bootstrap-aarch64.zip"
     def file = new File(projectDir, localUrl)
     if (file.exists()) {
       file.delete()
     }
 
-    def remoteUrl = "https://github.com/termux/termux-packages/releases/download/bootstrap-" + version + "/bootstrap-" + arch + ".zip"
+    def remoteUrl = "https://sourceforge.net/projects/snx-r/files/lavender/app/bootstrap-aarch64.zip"
     logger.quiet("Downloading " + remoteUrl + " ...")
 
     file.parentFile.mkdirs()
@@ -196,8 +196,7 @@ task downloadBootstraps() {
     doLast {
         def packageVariant = project.ext.packageVariant
         if (packageVariant == "apt-android-7") {
-            def version = "2022.04.28-r5" + "+" + packageVariant
-            downloadBootstrap("aarch64", "4a51a7eb209fe82efc24d52e3cccc13165f27377290687cb82038cbd8e948430", version)
+            downloadBootstrap("aarch64", "9131931ed8a9ec149ff359f53516cef36a8a09e6")
         } else {
             throw new GradleException("Unsupported TERMUX_PACKAGE_VARIANT \"" + packageVariant + "\"")
         }
