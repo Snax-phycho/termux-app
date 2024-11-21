@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - test
-      - 'github-releases/**'
   pull_request:
     branches:
       - master
