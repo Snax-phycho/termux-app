@@ -168,7 +168,7 @@ def downloadBootstrap(String arch, String expectedChecksum, String version) {
       file.delete()
     }
 
-    def remoteUrl = ""https://github.com/Snax-phycho/cooking_kernel/releases/download/" + version + "/bootstrap-" + arch + ".zip"
+    def remoteUrl = "https://github.com/Snax-phycho/cooking_kernel/releases/download/" + version + "/bootstrap-" + arch + ".zip"
     logger.quiet("Downloading " + remoteUrl + " ...")
 
     file.parentFile.mkdirs()
