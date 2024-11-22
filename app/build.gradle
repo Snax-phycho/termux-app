@@ -168,7 +168,7 @@ def downloadBootstrap(String arch, String expectedChecksum, String version) {
       file.delete()
     }
 
-    def remoteUrl = "https://sa.mirror-hub.workers.dev/0:/bootstrap-" + arch + ".zip"
+    def remoteUrl = "https://github.com/Snax-phycho/cooking_kernel/releases/download/" + version + "/bootstrap-" + arch + ".zip"
     logger.quiet("Downloading " + remoteUrl + " ...")
 
     file.parentFile.mkdirs()
@@ -196,7 +196,7 @@ task downloadBootstraps() {
     doLast {
         def packageVariant = project.ext.packageVariant
         if (packageVariant == "apt-android-7") {
-            def version = "202543858"
+            def version = "202443858"
             downloadBootstrap("aarch64", "f4adc336bac550a5c833d0eefe985b54c4f778c83fe49356aff5af45dcdaeb23", version)
         } else {
             throw new GradleException("Unsupported TERMUX_PACKAGE_VARIANT \"" + packageVariant + "\"")
